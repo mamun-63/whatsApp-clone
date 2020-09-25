@@ -4,14 +4,18 @@ import React, { useEffect, useState } from 'react'
 import './Chat.css'
 
 function Chat() {
+  const [input, setInput] = useState()
   const [seed, setSeed] = useState()
   
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000))
   },[])
 
+  // grabing the input field value
   const sendMessage = (e) => {
-
+    e.preventDefault()
+    console.log("You typed >> ", input)
+    setInput("")  // clearing the input to grab another value
   }
 
 
@@ -48,8 +52,8 @@ function Chat() {
 
       <div className="chat__footer">
         <InsertEmoticonOutlined />
-        <form action="">
-          <input placeholder="Type a message" type="text"/>
+        <form action="">  
+          <input value={input} onChange={e => setInput(e.target.value)} placeholder="Type a message" type="text"/>
           <button onClick={sendMessage} type="submit">Send a message</button>
         </form>
         <Mic />
