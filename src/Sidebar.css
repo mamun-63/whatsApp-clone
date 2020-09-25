@@ -56,3 +56,8 @@
   background-color: white;
   overflow: scroll;
 }
+
+/* Added by me, as to hide the scroll showing on page, but the scroll functionality will keep */
+.sidebar__chats::-webkit-scrollbar {
+  display: none;
+}

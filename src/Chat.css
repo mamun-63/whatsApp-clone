@@ -39,10 +39,10 @@
   overflow: scroll;
 }
 
-/* thats for not showing the scrollbar / but functionality will keep */
-/* .chat__body::-webkit-scrollbar {
+/* Added by me, as to hide the scroll showing on page, but the scroll functionality will keep */
+.chat__body::-webkit-scrollbar {
   display: none;
-}  */
+} 
 
 .chat__message {
   position: relative;
@@ -69,4 +69,35 @@
 .chat__timestamp {
   margin-left: 10px;
   font-size: xx-small;
+}
+
+.chat__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 62px;
+  border-top: 1px solid lightgray;
+}
+
+.chat__footer > form {
+  flex: 1;
+  display: flex;
+}
+
+.chat__footer > form > input {
+  flex: 1;
+  border-radius: 30px;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+/* hiding the send message button, but still it works while hitting enter, but you have to use type="submit" in button */
+.chat__footer > form > button {
+  display: none;
+}
+
+.chat__footer > .MuiSvgIcon-root {
+  padding: 10px;
+  color: gray;
 }
