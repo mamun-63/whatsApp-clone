@@ -13,7 +13,7 @@ function Sidebar() {
 
   // Retrieving 'rooms' collection that we created manually from firestore 
   useEffect(() => {
-    db.collection("rooms").onSnapshot((snapshot) => (
+    const unsubscribe = db.collection("rooms").onSnapshot((snapshot) => (
       setRooms(
         snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -21,6 +21,12 @@ function Sidebar() {
         }))
       )
     ))
+
+    // optimization steps / cleaning 
+    return () => {
+      unsubscribe()
+    }
+
   }, [])
 
   return (
