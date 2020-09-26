@@ -41,7 +41,7 @@ function Chat() {
   const sendMessage = (e) => {
     e.preventDefault()  
     console.log("You typed >> ", input)
-    setInput("")  // clearing the input to grab another value
+    
 
     // push the input field message into database
     db.collection('rooms').doc(roomId).collection('messages').add({
@@ -49,6 +49,8 @@ function Chat() {
       message: input,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     })
+
+    setInput("")  // clearing the input to grab another value
 
   }
 
@@ -60,7 +62,7 @@ function Chat() {
 
         <div className="chat__headerInfo">
           <h3>{roomName}</h3>
-          <p>Last seen at ..</p>
+          <p>Last seen {''} {new Date(messages[messages.length-1]?.timestamp?.toDate()).toUTCString() }</p>
         </div>
 
         <div className="chat__headerRight">
