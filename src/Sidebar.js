@@ -7,9 +7,11 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import SidebarChat from './SidebarChat';
 import db from './firebase';
+import { useStateValue } from './StateProvider';
 
 function Sidebar() {
   const [rooms, setRooms] = useState([])  // rooms is array collection
+  const [{user}, dispatch] = useStateValue()
 
   // Retrieving 'rooms' collection that we created manually from firestore 
   useEffect(() => {
@@ -32,7 +34,7 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar__header">
-        <Avatar />
+        <Avatar src={user?.photoURL}/>
         <div className="sidebar__headerRight">
           <IconButton>
             <DonutLargeIcon />
